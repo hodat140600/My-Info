@@ -929,61 +929,74 @@
             });
         });
         
-        // Add cascading fade-in animation for project items
         document.addEventListener('DOMContentLoaded', function() {
-            const projectItems = document.querySelectorAll('.project-item');
-            projectItems.forEach((item, index) => {
-                item.style.animationDelay = `${0.1 + (index * 0.05)}s`;
-                item.style.animation = 'fadeIn 0.6s ease-out forwards';
-                item.style.opacity = '0';
-            });
+            // Các animation code trước đó...
             
-            // Biểu tượng ứng dụng sử dụng Netlify Function
+            // Tải biểu tượng ứng dụng cục bộ
             document.querySelectorAll('img[data-app-id]').forEach(function(img) {
                 const packageId = img.getAttribute('data-app-id');
                 if (packageId) {
-                    // Lưu lại SVG gốc để dùng làm fallback
-                    const originalSrc = img.src;
-                    
-                    // Thiết lập thuộc tính
-                    img.setAttribute('loading', 'lazy');
-                    
-                    // URL của Netlify Function
-                    // ĐỔI URL NÀY SAU KHI DEPLOY NETLIFY
-                    const netlifyUrl = 'https://your-netlify-site-name.netlify.app';
-                    const functionUrl = `${netlifyUrl}/.netlify/functions/app-icon?id=${packageId}`;
-                    
-                    // Thử tải biểu tượng
-                    const testImg = new Image();
-                    testImg.onload = function() {
-                        // Thành công - áp dụng URL thực
-                        img.src = functionUrl;
-                        console.log(`✅ Đã tải biểu tượng cho ${packageId}`);
-                    };
-                    testImg.onerror = function() {
-                        // Lỗi - giữ SVG gốc
-                        console.log(`❌ Không thể tải biểu tượng cho ${packageId}`);
-                        img.src = originalSrc;
-                    };
-                    
-                    // Bắt đầu tải
-                    testImg.src = functionUrl;
-                    
-                    // Thiết lập làm mới tự động mỗi ngày
-                    setInterval(function() {
-                        // Thêm tham số chống cache
-                        const cacheBuster = new Date().getTime();
-                        const refreshUrl = `${functionUrl}&_=${cacheBuster}`;
-                        
-                        const refreshImg = new Image();
-                        refreshImg.onload = function() {
-                            img.src = refreshUrl;
-                        };
-                        refreshImg.src = refreshUrl;
-                    }, 24 * 60 * 60 * 1000); // 24 giờ
+                    // Sử dụng biểu tượng từ thư mục app-icons
+                    img.src = `app-icons/${packageId}.png`;
                 }
             });
-        });
+        });        
+
+        // Add cascading fade-in animation for project items
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     const projectItems = document.querySelectorAll('.project-item');
+        //     projectItems.forEach((item, index) => {
+        //         item.style.animationDelay = `${0.1 + (index * 0.05)}s`;
+        //         item.style.animation = 'fadeIn 0.6s ease-out forwards';
+        //         item.style.opacity = '0';
+        //     });
+            
+        //     // Biểu tượng ứng dụng sử dụng Netlify Function
+        //     document.querySelectorAll('img[data-app-id]').forEach(function(img) {
+        //         const packageId = img.getAttribute('data-app-id');
+        //         if (packageId) {
+        //             // Lưu lại SVG gốc để dùng làm fallback
+        //             const originalSrc = img.src;
+                    
+        //             // Thiết lập thuộc tính
+        //             img.setAttribute('loading', 'lazy');
+                    
+        //             // URL của Netlify Function
+        //             // ĐỔI URL NÀY SAU KHI DEPLOY NETLIFY
+        //             const netlifyUrl = 'https://your-netlify-site-name.netlify.app';
+        //             const functionUrl = `${netlifyUrl}/.netlify/functions/app-icon?id=${packageId}`;
+                    
+        //             // Thử tải biểu tượng
+        //             const testImg = new Image();
+        //             testImg.onload = function() {
+        //                 // Thành công - áp dụng URL thực
+        //                 img.src = functionUrl;
+        //                 console.log(`✅ Đã tải biểu tượng cho ${packageId}`);
+        //             };
+        //             testImg.onerror = function() {
+        //                 // Lỗi - giữ SVG gốc
+        //                 console.log(`❌ Không thể tải biểu tượng cho ${packageId}`);
+        //                 img.src = originalSrc;
+        //             };
+                    
+        //             // Bắt đầu tải
+        //             testImg.src = functionUrl;
+                    
+        //             // Thiết lập làm mới tự động mỗi ngày
+        //             setInterval(function() {
+        //                 // Thêm tham số chống cache
+        //                 const cacheBuster = new Date().getTime();
+        //                 const refreshUrl = `${functionUrl}&_=${cacheBuster}`;
+                        
+        //                 const refreshImg = new Image();
+        //                 refreshImg.onload = function() {
+        //                     img.src = refreshUrl;
+        //                 };
+        //                 refreshImg.src = refreshUrl;
+        //             }, 24 * 60 * 60 * 1000); // 24 giờ
+        //         }
+        //     });
+        // });
     </script>
 </body>
 </html>
