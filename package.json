@@ -1,0 +1,8 @@
+{
+  "name": "app-icon-proxy",
+  "version": "1.0.0",
+  "description": "Proxy for Google Play Store app icons",
+  "dependencies": {
+    "axios": "^0.24.0"
+  }
+}
