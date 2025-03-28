@@ -5,141 +5,304 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hồ Quốc Đạt - Unity Game Developer</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gray-color: #6c757d;
+            --light-gray: #e9ecef;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
         
         body {
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: #f5f8fa;
+            color: var(--dark-color);
             line-height: 1.6;
-            padding: 20px;
+            padding: 25px;
         }
         
         .container {
             max-width: 900px;
             margin: 0 auto;
             background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
+            box-shadow: var(--box-shadow);
+            border-radius: 12px;
             overflow: hidden;
+            transform: translateY(0);
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .header {
             display: flex;
-            padding: 20px;
-            background-color: #333;
+            padding: 40px;
+            background: linear-gradient(135deg, #3a0ca3, #4361ee);
             color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+            z-index: 0;
         }
         
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #fff;
+            border: 4px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            transition: var(--transition);
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
         }
         
         .header-info {
-            margin-left: 20px;
+            margin-left: 35px;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            z-index: 1;
         }
         
         .header-info h1 {
-            font-size: 28px;
-            margin-bottom: 5px;
+            font-size: 36px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
         
         .header-info h2 {
-            font-size: 18px;
-            font-weight: normal;
-            color: #ccc;
+            font-size: 22px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.85);
+            letter-spacing: 0.5px;
         }
         
         .contact-info {
             display: flex;
             flex-wrap: wrap;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-bottom: 1px solid #eee;
+            padding: 30px;
+            background-color: #fff;
+            border-bottom: 1px solid var(--light-gray);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
         }
         
         .contact-item {
             display: flex;
             align-items: center;
-            margin-right: 30px;
-            margin-bottom: 10px;
+            margin-right: 35px;
+            margin-bottom: 12px;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-2px);
         }
         
         .contact-item i {
-            margin-right: 10px;
-            color: #555;
+            margin-right: 12px;
+            color: var(--primary-color);
+            font-size: 20px;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover i {
+            transform: scale(1.2);
         }
         
         .main-content {
-            padding: 20px;
+            padding: 35px;
         }
         
         .section {
-            margin-bottom: 30px;
+            margin-bottom: 45px;
+            animation: slideUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .section:nth-child(1) { animation-delay: 0.2s; }
+        .section:nth-child(2) { animation-delay: 0.3s; }
+        .section:nth-child(3) { animation-delay: 0.4s; }
+        .section:nth-child(4) { animation-delay: 0.5s; }
+        .section:nth-child(5) { animation-delay: 0.6s; }
+        .section:nth-child(6) { animation-delay: 0.7s; }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .section-header {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 15px;
+            position: relative;
+        }
+        
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .section:hover .section-header::after {
+            width: 120px;
         }
         
         .section-icon {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #f0f0f0;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-            margin-right: 15px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            margin-right: 18px;
+            font-size: 22px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .section:hover .section-icon {
+            transform: rotate(10deg);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #e9ecef, #dee2e6);
         }
         
         .section-title {
-            font-size: 20px;
-            font-weight: bold;
-            color: #333;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--dark-color);
+            letter-spacing: 0.5px;
         }
         
         .section-content {
-            padding-left: 45px;
+            padding-left: 58px;
         }
         
         .education-item, .experience-item, .project-item {
-            margin-bottom: 20px;
+            margin-bottom: 28px;
+            transition: var(--transition);
+            border-radius: 12px;
+        }
+        
+        .project-item {
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            background-color: #fff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+            transition: height 0.5s ease;
+        }
+        
+        .project-item:hover::before {
+            height: 100%;
+        }
+        
+        .project-item:hover {
+            background-color: rgba(240, 240, 240, 0.5);
+            border: 1px solid #e0e0e0;
+            transform: translateY(-6px);
+            box-shadow: var(--card-shadow);
         }
         
         .education-header, .experience-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
         
         .institution, .company {
-            font-weight: bold;
+            font-weight: 600;
+            color: #444;
+            font-size: 1.05rem;
         }
         
         .period {
-            color: #666;
+            color: var(--gray-color);
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 2px 12px;
+            background-color: var(--light-gray);
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+        
+        .education-item:hover .period, 
+        .experience-item:hover .period {
+            background-color: #e0e0e0;
+            transform: translateY(-2px);
         }
         
         .major {
             font-style: italic;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            color: var(--gray-color);
+            font-size: 0.95rem;
         }
         
         .skills-table {
@@ -148,51 +311,190 @@
         }
         
         .skills-table td {
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--light-gray);
+            transition: var(--transition);
+        }
+        
+        .skills-table tr:hover td {
+            background-color: rgba(240, 240, 240, 0.5);
+            padding-left: 5px;
         }
         
         .skills-table td:first-child {
             width: 200px;
+            font-weight: 600;
+            color: #444;
+        }
+        
+        .skills-table ul {
+            padding-left: 20px;
+        }
+        
+        .skills-table li {
+            margin-bottom: 6px;
+            position: relative;
+        }
+        
+        .skills-table li::before {
+            content: '•';
+            color: var(--primary-color);
             font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .project-header-info {
+            flex: 1;
         }
         
         .project-title {
-            font-weight: bold;
-            margin-bottom: 5px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: var(--dark-color);
+            display: block;
+            transition: var(--transition);
         }
         
-        .project-link {
-            display: block;
-            word-break: break-all;
-            color: #0366d6;
-            margin-bottom: 5px;
-            font-size: 14px;
+        .project-title a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .project-title a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -3px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .project-title a:hover::after {
+            width: 100%;
+        }
+        
+        .project-title a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .app-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            margin-left: 20px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+        
+        .project-item:hover .app-icon {
+            transform: scale(1.1) rotate(3deg);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
         }
         
         .project-description {
-            margin-bottom: 5px;
+            margin-bottom: 12px;
+            color: var(--gray-color);
+            font-size: 15px;
+            line-height: 1.5;
         }
         
         .project-points {
             margin-left: 20px;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+        }
+        
+        .project-points li {
+            margin-bottom: 8px;
+            color: #555;
+            position: relative;
+            padding-left: 5px;
+            transition: var(--transition);
+        }
+        
+        .project-points li::marker {
+            color: var(--primary-color);
+            font-size: 1.1em;
+        }
+        
+        .project-points li:hover {
+            transform: translateX(3px);
         }
         
         a {
-            color: #0366d6;
+            color: var(--primary-color);
             text-decoration: none;
+            transition: var(--transition);
         }
         
         a:hover {
-            text-decoration: underline;
+            color: var(--secondary-color);
         }
         
+        /* Pulse animation for header */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(67, 97, 238, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(67, 97, 238, 0); }
+        }
+        
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+            z-index: 10;
+        }
+        
+        .scroll-indicator.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .scroll-indicator:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Media Queries */
         @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
             .header {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
+                padding: 30px 20px;
             }
             
             .header-info {
@@ -202,6 +504,7 @@
             
             .contact-info {
                 flex-direction: column;
+                padding: 20px;
             }
             
             .contact-item {
@@ -218,10 +521,35 @@
             
             .period {
                 margin-top: 5px;
+                align-self: flex-start;
             }
             
             .skills-table td:first-child {
                 width: 100px;
+            }
+            
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .app-icon {
+                margin-top: 15px;
+                margin-left: 0;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .section-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 20px;
             }
         }
     </style>
@@ -401,18 +729,30 @@
                 </div>
                 <div class="section-content">
                     <div class="project-item">
-                        <div class="project-title">1. Triple Butterfly: Block Puzzle</div>
-                        <a href="https://play.google.com/store/apps/details?id=com.wolffun.tripleblock&pcampaignid=web_share" target="_blank" class="project-link">Triple Butterfly: Block Puzzle</a>
-                        <div class="project-description">Description: Puzzle game - 3 developers - 2 months from scratch to the first public</div>
+                        <div class="project-header">
+                            <div class="project-header-info">
+                                <div class="project-title">
+                                    <a href="https://play.google.com/store/apps/details?id=com.wolffun.tripleblock&pcampaignid=web_share" target="_blank">1. Triple Butterfly: Block Puzzle</a>
+                                </div>
+                                <div class="project-description">Description: Puzzle game - 3 developers - 2 months from scratch to the first public</div>
+                            </div>
+                            <img src="https://images.weserv.nl/?url=play-lh.googleusercontent.com/GDR7LaYj9aXRfMvGABY3WOAYm5hf6MCjDcxKLu9hq0gFcT4oebtyc3lvqPWF1MBWbw=w240-h480-rw" alt="Triple Butterfly: Block Puzzle" class="app-icon">
+                        </div>
                         <ul class="project-points">
                             <li>Implement feature shop, IAP, game event,...</li>
                         </ul>
                     </div>
                     
                     <div class="project-item">
-                        <div class="project-title">2. Match Block</div>
-                        <a href="https://play.google.com/store/apps/details?id=com.wolffun.matchblock&pcampaignid=web_share" target="_blank" class="project-link">Match Block</a>
-                        <div class="project-description">Description: Puzzle game – 3 developers - 4 months from scratch to the first public launch.</div>
+                        <div class="project-header">
+                            <div class="project-header-info">
+                                <div class="project-title">
+                                    <a href="https://play.google.com/store/apps/details?id=com.wolffun.matchblock&pcampaignid=web_share" target="_blank">2. Match Block</a>
+                                </div>
+                                <div class="project-description">Description: Puzzle game – 3 developers - 4 months from scratch to the first public launch.</div>
+                            </div>
+                            <img src="https://images.weserv.nl/?url=play-lh.googleusercontent.com/xLtWfzc-DKcHLShDrh1A7wMEkIcTzb7Sot6DQzDH89zg3MUXOUXJwoCqFdLxqwsYUg=w240-h480-rw" alt="Match Block" class="app-icon">
+                        </div>
                         <ul class="project-points">
                             <li>Implement feature and core gameplay with UI system.</li>
                             <li>Make full flow concept animtion UI and vfx.</li>
@@ -421,9 +761,15 @@
                     </div>
                     
                     <div class="project-item">
-                        <div class="project-title">3. Tile King - Triple Match</div>
-                        <a href="https://play.google.com/store/apps/details?id=com.wolffun.tileking&pcampaignid=web_share" target="_blank" class="project-link">Tile King - Triple Match</a>
-                        <div class="project-description">Description: Puzzle game – 2 developers - 3 months from scratch to the first public launch</div>
+                        <div class="project-header">
+                            <div class="project-header-info">
+                                <div class="project-title">
+                                    <a href="https://play.google.com/store/apps/details?id=com.wolffun.tileking&pcampaignid=web_share" target="_blank">3. Tile King - Triple Match</a>
+                                </div>
+                                <div class="project-description">Description: Puzzle game – 2 developers - 3 months from scratch to the first public launch</div>
+                            </div>
+                            <img src="https://images.weserv.nl/?url=play-lh.googleusercontent.com/wVekutUmGrF6V9KkJX50HXhqVXcRnygl1yYsZKtNlbslz8aUjsXhgD4aslWpHNXbZA=w240-h480-rw" alt="Tile King - Triple Match" class="app-icon">
+                        </div>
                         <ul class="project-points">
                             <li>Implement the correct concepts and UI flow in this project, especially learning about DOTween.</li>
                             <li>Base on UI system to make core gameplay system.</li>
@@ -431,9 +777,15 @@
                     </div>
                     
                     <div class="project-item">
-                        <div class="project-title">4. Decor Diaries - Match Screws</div>
-                        <a href="https://play.google.com/store/apps/details?id=com.legendarylabs.boltbuster" target="_blank" class="project-link">Decor Diaries - Match Screws</a>
-                        <div class="project-description">Description: Puzzle game Match-3 Short – 2 developers – 2 months from scratch to the first public launch.</div>
+                        <div class="project-header">
+                            <div class="project-header-info">
+                                <div class="project-title">
+                                    <a href="https://play.google.com/store/apps/details?id=com.legendarylabs.boltbuster" target="_blank">4. Decor Diaries - Match Screws</a>
+                                </div>
+                                <div class="project-description">Description: Puzzle game Match-3 Short – 2 developers – 2 months from scratch to the first public launch.</div>
+                            </div>
+                            <img src="https://images.weserv.nl/?url=play-lh.googleusercontent.com/k5k7Yw9BvSgQJPZbmyZvqc2SXvrH4XbD6CkCubECLNs_VLUPdLq1A5O_c8FhF9QXEco=w240-h480-rw" alt="Decor Diaries - Match Screws" class="app-icon">
+                        </div>
                         <ul class="project-points">
                             <li>Implement feature and core gameplay with UI system.</li>
                             <li>Make full flow concept animtion UI and vfx.</li>
@@ -442,9 +794,15 @@
                     </div>
 
                     <div class="project-item">
-                        <div class="project-title">5. Screw Quest: Car Makeover</div>
-                        <a href="https://play.google.com/store/apps/details?id=com.legendarylabs.screw.quest" target="_blank" class="project-link">Screw Quest: Car Makeover</a>
-                        <div class="project-description">Description: Puzzle game Match-3 Short – 1 developers –  2 weaks for reskin and build new features.</div>
+                        <div class="project-header">
+                            <div class="project-header-info">
+                                <div class="project-title">
+                                    <a href="https://play.google.com/store/apps/details?id=com.legendarylabs.screw.quest" target="_blank">5. Screw Quest: Car Makeover</a>
+                                </div>
+                                <div class="project-description">Description: Puzzle game Match-3 Short – 1 developers –  2 weaks for reskin and build new features.</div>
+                            </div>
+                            <img src="https://images.weserv.nl/?url=play-lh.googleusercontent.com/qVOIJWrUFGEBVUuUwNP05Y_CnTiGpPQOXCq91p_PQN_P3eOd5dhyLEWJ6f60NjyosA=w240-h480-rw" alt="Screw Quest: Car Makeover" class="app-icon">
+                        </div>
                         <ul class="project-points">
                             <li>Implement new liveops event features.</li>
                             <li>Make full flow decoration car 3D system.</li>
@@ -452,9 +810,15 @@
                     </div>
 
                     <div class="project-item">
-                        <div class="project-title">6. Screw Match</div>
-                        <a href="https://play.google.com/store/apps/details?id=com.legendarylabs.screwmatch" target="_blank" class="project-link">Screw Match</a>
-                        <div class="project-description">Description: Puzzle game Match-3 Short – 1 developers – 2 weaks for reskin and build new features.</div>
+                        <div class="project-header">
+                            <div class="project-header-info">
+                                <div class="project-title">
+                                    <a href="https://play.google.com/store/apps/details?id=com.legendarylabs.screwmatch" target="_blank">6. Screw Match</a>
+                                </div>
+                                <div class="project-description">Description: Puzzle game Match-3 Short – 1 developers – 2 weaks for reskin and build new features.</div>
+                            </div>
+                            <img src="https://images.weserv.nl/?url=play-lh.googleusercontent.com/oR6SIJmk3kzLiqZmzXl7xLGS9XeRWOXcIBp-RtpmInkAYPEEr5nuPTg9YXpzL3y88LY=w240-h480-rw" alt="Screw Match" class="app-icon">
+                        </div>
                         <ul class="project-points">
                             <li>Implement new home features.</li>
                             <li>Make full flow decoration system.</li>
@@ -463,9 +827,15 @@
                     </div>
 
                     <div class="project-item">
-                        <div class="project-title">7. Thetan Rivals: Party Royale</div>
-                        <a href="https://play.google.com/store/apps/details?id=com.wolffun.thetanrivals&pcampaignid=web_share" target="_blank" class="project-link">Thetan Rivals: Party Royale</a>
-                        <div class="project-description">Description: Platform battle royale game – 9 developers – since March 2023 till now</div>
+                        <div class="project-header">
+                            <div class="project-header-info">
+                                <div class="project-title">
+                                    <a href="https://play.google.com/store/apps/details?id=com.wolffun.thetanrivals&pcampaignid=web_share" target="_blank">7. Thetan Rivals: Party Royale</a>
+                                </div>
+                                <div class="project-description">Description: Platform battle royale game – 9 developers – since March 2023 till now</div>
+                            </div>
+                            <img src="https://images.weserv.nl/?url=play-lh.googleusercontent.com/LoYVGsZK5j0gY-v0XB5LcJZcW1sSQKPvYNc-lT11R3Kpn5NUl4LvflvkY9EYlJEobrM=w240-h480-rw" alt="Thetan Rivals: Party Royale" class="app-icon">
+                        </div>
                         <ul class="project-points">
                             <li>Restruture asset and optimize addressable, conducted performance profiling, identifying asset usage issue.</li>
                             <li>Implement feature UI flow concept.</li>
@@ -473,36 +843,60 @@
                     </div>
                     
                     <div class="project-item">
-                        <div class="project-title">8. Thetan Immortal - PvP Duels</div>
-                        <a href="https://play.google.com/store/apps/details?id=com.wolffun.thetanimmortal&pcampaignid=web_share" target="_blank" class="project-link">Thetan Immortal - PvP Duels</a>
-                        <div class="project-description">Description: PvP duel game - 10 developers - since July 2023 till now</div>
+                        <div class="project-header">
+                            <div class="project-header-info">
+                                <div class="project-title">
+                                    <a href="https://play.google.com/store/apps/details?id=com.wolffun.thetanimmortal&pcampaignid=web_share" target="_blank">8. Thetan Immortal - PvP Duels</a>
+                                </div>
+                                <div class="project-description">Description: PvP duel game - 10 developers - since July 2023 till now</div>
+                            </div>
+                            <img src="https://images.weserv.nl/?url=play-lh.googleusercontent.com/2i0Hev5LHgb1w0wGKgvWzxqz8IDd02Js_v-Iq5YLqFFyupUvY-nGQpTZzJC0KlBkSRM=w240-h480-rw" alt="Thetan Immortal - PvP Duels" class="app-icon">
+                        </div>
                         <ul class="project-points">
                             <li>Implement full feature in home like: card item system. hero/skill system, battle pass, ranking,...</li>
                         </ul>
                     </div>
                     
                     <div class="project-item">
-                        <div class="project-title">9. Alphabet Shooter: Survival FPS</div>
-                        <a href="https://play.google.com/store/apps/details?id=com.htt.alpha.shooter.fps&pcampaignid=web_share" target="_blank" class="project-link">Alphabet Shooter: Survival FPS</a>
-                        <div class="project-description">Description: FPS game - 4 developer - 5 months from scratch to the first public.</div>
+                        <div class="project-header">
+                            <div class="project-header-info">
+                                <div class="project-title">
+                                    <a href="https://play.google.com/store/apps/details?id=com.htt.alpha.shooter.fps&pcampaignid=web_share" target="_blank">9. Alphabet Shooter: Survival FPS</a>
+                                </div>
+                                <div class="project-description">Description: FPS game - 4 developer - 5 months from scratch to the first public.</div>
+                            </div>
+                            <img src="https://images.weserv.nl/?url=play-lh.googleusercontent.com/I0mFnP2pUQ-tXoUl3Q_1IxBQbk2d2qdqrFjwh4_pMk2I0bjVdx5FwIySoMFjuuN7kA=w240-h480-rw" alt="Alphabet Shooter: Survival FPS" class="app-icon">
+                        </div>
                         <ul class="project-points">
                             <li>Implement machanic game, learning about 3D controller character</li>
                         </ul>
                     </div>
                     
                     <div class="project-item">
-                        <div class="project-title">10. Hide and Go Seek: Monster Hunt</div>
-                        <a href="https://play.google.com/store/apps/details?id=com.wolf.objecthunt&pcampaignid=web_share" target="_blank" class="project-link">Hide and Go Seek: Monster Hunt</a>
-                        <div class="project-description">Description: 3D Hide and Seek game - 4 developers - 4 months from scratch to the first public.</div>
+                        <div class="project-header">
+                            <div class="project-header-info">
+                                <div class="project-title">
+                                    <a href="https://play.google.com/store/apps/details?id=com.wolf.objecthunt&pcampaignid=web_share" target="_blank">10. Hide and Go Seek: Monster Hunt</a>
+                                </div>
+                                <div class="project-description">Description: 3D Hide and Seek game - 4 developers - 4 months from scratch to the first public.</div>
+                            </div>
+                            <img src="https://images.weserv.nl/?url=play-lh.googleusercontent.com/Zr-FVPMuBiNn6TgwKGtZDZg1wqLrGJ-KkWBvW7-BwxEy76XsEElIlTmdHuHXnqdZGdWr=w240-h480-rw" alt="Hide and Go Seek: Monster Hunt" class="app-icon">
+                        </div>
                         <ul class="project-points">
                             <li>Learning about path finding, making data structure with scriptable object.</li>
                         </ul>
                     </div>
                     
                     <div class="project-item">
-                        <div class="project-title">11. Stick Hero</div>
-                        <a href="https://play.google.com/store/apps/details?id=com.mgif.stickman.tower&pcampaignid=web_share" target="_blank" class="project-link">Stick Hero</a>
-                        <div class="project-description">Description: Hyper casual game - 2 developers - 3 months from scratch to the first public.</div>
+                        <div class="project-header">
+                            <div class="project-header-info">
+                                <div class="project-title">
+                                    <a href="https://play.google.com/store/apps/details?id=com.mgif.stickman.tower&pcampaignid=web_share" target="_blank">11. Stick Hero</a>
+                                </div>
+                                <div class="project-description">Description: Hyper casual game - 2 developers - 3 months from scratch to the first public.</div>
+                            </div>
+                            <img src="https://images.weserv.nl/?url=play-lh.googleusercontent.com/9TvR8w9AyU_gT_CC2oYwfnXgbNgPD0iSOzXorx-PiWDQA9Z-qmAM5wHTPdRRhLDcJA=w240-h480-rw" alt="Stick Hero" class="app-icon">
+                        </div>
                         <ul class="project-points">
                             <li>Learning to make animtion with Dotween and using Spine...</li>
                         </ul>
@@ -511,5 +905,38 @@
             </div>
         </div>
     </div>
+    
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" id="scrollTop">↑</div>
+    
+    <script>
+        // Show/hide scroll indicator
+        window.addEventListener('scroll', function() {
+            const scrollBtn = document.getElementById('scrollTop');
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        });
+        
+        // Scroll to top when clicking the button
+        document.getElementById('scrollTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Add cascading fade-in animation for project items
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectItems = document.querySelectorAll('.project-item');
+            projectItems.forEach((item, index) => {
+                item.style.animationDelay = `${0.1 + (index * 0.05)}s`;
+                item.style.animation = 'fadeIn 0.6s ease-out forwards';
+                item.style.opacity = '0';
+            });
+        });
+    </script>
 </body>
 </html>
