@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ Quốc Đạt - Unity Game Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .header {
+            display: flex;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+        }
+        
+        .header-info {
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .header-info h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .header-info h2 {
+            font-size: 18px;
+            font-weight: normal;
+            color: #ccc;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-right: 30px;
+            margin-bottom: 10px;
+        }
+        
+        .contact-item i {
+            margin-right: 10px;
+            color: #555;
+        }
+        
+        .main-content {
+            padding: 20px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .section-icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            margin-right: 15px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .section-content {
+            padding-left: 45px;
+        }
+        
+        .education-item, .experience-item, .project-item {
+            margin-bottom: 20px;
+        }
+        
+        .education-header, .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .institution, .company {
+            font-weight: bold;
+        }
+        
+        .period {
+            color: #666;
+        }
+        
+        .major {
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+        
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .skills-table td {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .skills-table td:first-child {
+            width: 200px;
+            font-weight: bold;
+        }
+        
+        .project-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .project-link {
+            display: block;
+            word-break: break-all;
+            color: #0366d6;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .project-description {
+            margin-bottom: 5px;
+        }
+        
+        .project-points {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+        
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .header-info {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+            }
+            
+            .contact-item {
+                margin-right: 0;
+            }
+            
+            .section-content {
+                padding-left: 0;
+            }
+            
+            .education-header, .experience-header {
+                flex-direction: column;
+            }
+            
+            .period {
+                margin-top: 5px;
+            }
+            
+            .skills-table td:first-child {
+                width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <img src="profile.jpg" alt="Hồ Quốc Đạt" class="profile-img">
+            <div class="header-info">
+                <h1>Hồ Quốc Đạt</h1>
+                <h2>Unity Game Developer</h2>
+            </div>
+        </div>
+        
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <div class="contact-item">
+                <i>📱</i>
+                <span>0582531013</span>
+            </div>
+            <div class="contact-item">
+                <i>📧</i>
+                <a href="mailto:hodat140600@gmail.com">hodat140600@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <i>🌐</i>
+                <a href="https://hodat140600.itch.io" target="_blank">hodat140600.itch.io</a>
+            </div>
+            <div class="contact-item">
+                <i>👤</i>
+                <span>Male</span>
+            </div>
+            <div class="contact-item">
+                <i>🎂</i>
+                <span>June 14, 2000</span>
+            </div>
+            <div class="contact-item">
+                <i>📍</i>
+                <span>Bình Chiểu Street, Bình Chiểu Ward, Thủ Đức District, Hồ Chí Minh City, Việt Nam</span>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <!-- Objective Section -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">💡</div>
+                    <h3 class="section-title">Objective</h3>
+                </div>
+                <div class="section-content">
+                    <p>With my passion for research, I can spend my free time figuring out the easiest way to solve my problem, including how it works and why it was made.</p>
+                    <p>My short-term goal is to get as much work experience as possible, while one of my long-term goals is to contribute my work values to the company.</p>
+                </div>
+            </div>
+            
+            <!-- Education Section -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">🎓</div>
+                    <h3 class="section-title">Education</h3>
+                </div>
+                <div class="section-content">
+                    <div class="education-item">
+                        <div class="education-header">
+                            <div class="institution">POST AND TELECOMMUNICATION INSTITUTE OF TECHNOLOGY</div>
+                            <div class="period">2018 - 2023</div>
+                        </div>
+                        <div class="major">Major: Information Security</div>
+                        <div>GPA: 2.9/4</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skills Section -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">🔧</div>
+                    <h3 class="section-title">Skills</h3>
+                </div>
+                <div class="section-content">
+                    <table class="skills-table">
+                        <tr>
+                            <td>Language</td>
+                            <td>English (Read & Write)</td>
+                        </tr>
+                        <tr>
+                            <td>Program Language</td>
+                            <td>C#, HLSL/GLSL</td>
+                        </tr>
+                        <tr>
+                            <td>Unity Engine</td>
+                            <td>
+                                <ul>
+                                    <li>Tool Dev in Unity: custom Editor, Thirdparty Plugin, Tools for Development Process.</li>
+                                    <li>Mathematic for Game Dev.</li>
+                                    <li>UI & Rendering: Shader code, Render pipeline.</li>
+                                    <li>Particles System: VFX.</li>
+                                    <li>Optimization: Code & Engine.</li>
+                                    <li>Game Development Patterns (Design Patterns)</li>
+                                    <li>Have worked with Android/Firebase.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Activities Section -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">👥</div>
+                    <h3 class="section-title">Activities</h3>
+                </div>
+                <div class="section-content">
+                    <div class="education-item">
+                        <div class="education-header">
+                            <div class="institution">POST AND TELECOMMUNICATION INSTITUTE OF TECHNOLOGY - CLUB ITMC</div>
+                            <div class="period">Jan 2019 - Mar 2021</div>
+                        </div>
+                        <div class="major">Leader of game dev team</div>
+                        <div>Trainning member how to program and using Unity.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Honors & Awards Section -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">🏆</div>
+                    <h3 class="section-title">Honors & Awards</h3>
+                </div>
+                <div class="section-content">
+                    <div class="education-item">
+                        <div class="education-header">
+                            <div class="institution">2 times get scholarships in University Schedule</div>
+                            <div class="period">2021-2022</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Work Experience Section -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">💼</div>
+                    <h3 class="section-title">Work Experience</h3>
+                </div>
+                <div class="section-content">
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="company">ROCKET STUDIO - ONESOFT</div>
+                            <div class="period">2022 - 2023</div>
+                        </div>
+                        <div class="major">Game Development</div>
+                        <div>Development Hyper Casual Game: Puzzle, Action, ...</div>
+                        <div>Have 3 products on Store</div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="company">WOLFFUN GAME</div>
+                            <div class="period">2023 - 2024</div>
+                        </div>
+                        <div class="major">Game Development</div>
+                        <div>Development Casual Game: Puzzle, Action, ...</div>
+                        <div>Have 5 products on Store</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Projects Section -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">➕</div>
+                    <h3 class="section-title">Projects</h3>
+                </div>
+                <div class="section-content">
+                    <div class="project-item">
+                        <div class="project-title">1. Triple Butterfly: Block Puzzle</div>
+                        <a href="https://play.google.com/store/apps/details?id=com.wolffun.tripleblock&pcampaignid=web_share" target="_blank" class="project-link">https://play.google.com/store/apps/details?id=com.wolffun.tripleblock&amp;pcampaignid=web_share</a>
+                        <div class="project-description">Description: Puzzle game - 3 developers - 2 months from scratch to the first public</div>
+                        <div class="project-points">Implement feature shop, IAP, game event,...</div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-title">2. Match Block</div>
+                        <a href="https://play.google.com/store/apps/details?id=com.wolffun.matchblock&pcampaignid=web_share" target="_blank" class="project-link">https://play.google.com/store/apps/details?id=com.wolffun.matchblock&amp;pcampaignid=web_share</a>
+                        <div class="project-description">Description: Puzzle game – 3 developers - 4 months from scratch to the first public launch.</div>
+                        <ul class="project-points">
+                            <li>Implement feature and core gameplay with UI system.</li>
+                            <li>Make full flow concept animtion UI and vfx.</li>
+                            <li>Decide the architecture and resolve problems about codes.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-title">3. Tile King - Triple Match</div>
+                        <a href="https://play.google.com/store/apps/details?id=com.wolffun.tileking&pcampaignid=web_share" target="_blank" class="project-link">https://play.google.com/store/apps/details?id=com.wolffun.tileking&amp;pcampaignid=web_share</a>
+                        <div class="project-description">Description: Puzzle game – 2 developers - 3 months from scratch to the first public launch</div>
+                        <ul class="project-points">
+                            <li>Implement the correct concepts and UI flow in this project, especially learning about DOTween.</li>
+                            <li>Base on UI system to make core gameplay system.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-title">4. Thetan Rivals: Party Royale</div>
+                        <a href="https://play.google.com/store/apps/details?id=com.wolffun.thetanrivals&pcampaignid=web_share" target="_blank" class="project-link">https://play.google.com/store/apps/details?id=com.wolffun.thetanrivals&amp;pcampaignid=web_share</a>
+                        <div class="project-description">Description: Platform battle royale game – 9 developers – since March 2023 till now</div>
+                        <ul class="project-points">
+                            <li>Restruture asset and optimize addressable, conducted performance profiling, identifying asset usage issue.</li>
+                            <li>Implement feature UI flow concept.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-title">5. Thetan Immortal - PvP Duels</div>
+                        <a href="https://play.google.com/store/apps/details?id=com.wolffun.thetanimmortal&pcampaignid=web_share" target="_blank" class="project-link">https://play.google.com/store/apps/details?id=com.wolffun.thetanimmortal&amp;pcampaignid=web_share</a>
+                        <div class="project-description">Description: PvP duel game - 10 developers - since July 2023 till now</div>
+                        <div class="project-points">Implement full feature in home like: card item system. hero/skill system, battle pass, ranking,...</div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-title">6. Alphabet Shooter: Survival FPS</div>
+                        <a href="https://play.google.com/store/apps/details?id=com.htt.alpha.shooter.fps&pcampaignid=web_share" target="_blank" class="project-link">https://play.google.com/store/apps/details?id=com.htt.alpha.shooter.fps&amp;pcampaignid=web_share</a>
+                        <div class="project-description">Description: FPS game - 4 developer - 5 months from scratch to the first public.</div>
+                        <div class="project-points">Implement machanic game, learning about 3D controller character</div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-title">7. Hide and Go Seek: Monster Hunt</div>
+                        <a href="https://play.google.com/store/apps/details?id=com.wolf.objecthunt&pcampaignid=web_share" target="_blank" class="project-link">https://play.google.com/store/apps/details?id=com.wolf.objecthunt&amp;pcampaignid=web_share</a>
+                        <div class="project-description">Description: 3D Hide and Seek game - 4 developers - 4 months from scratch to the first public.</div>
+                        <div class="project-points">Learning about path finding, making data structure with scriptable object.</div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-title">8. Stick Hero</div>
+                        <a href="https://play.google.com/store/apps/details?id=com.mgif.stickman.tower&pcampaignid=web_share" target="_blank" class="project-link">https://play.google.com/store/apps/details?id=com.mgif.stickman.tower&amp;pcampaignid=web_share</a>
+                        <div class="project-description">Description: Hyper casual game - 2 developers - 3 months from scratch to the first public.</div>
+                        <div class="project-points">Learning to make animtion with Dotween and using Spine..</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
