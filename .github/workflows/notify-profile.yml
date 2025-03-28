@@ -1,0 +1,17 @@
+name: Notify Profile Repo
+on:
+  push:
+    branches: [main]  # Or your default branch
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch event to profile repo
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          repository: hodat140600/hodat140600
+          event-type: my-info-updated
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
